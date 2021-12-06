@@ -16,5 +16,14 @@ public class Point {
 	void moveRight() {
 		x++;
 	}
+	void moveLeft() {
+		x--;
+	}
+	void moveUp() {
+		y--;
+	}
+	void moveDown() {
+		y++;
+	}
 
 }
