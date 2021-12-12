@@ -32,6 +32,7 @@ public class Demo1 {
 		Point p = new Point(5, 3);
 		// we use the reference to access the object`s members
 		System.out.println(p.getX());
+		System.out.println(p.getY());
 		
 		
 
