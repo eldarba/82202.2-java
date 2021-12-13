@@ -42,8 +42,9 @@ public class Demo5For {
 		for (int i = 0; i <= 10; i++) {
 			System.out.println(i + " - " + (10 - i));
 		}
+
 		System.out.println("=============");
-		for (int i = 0, j = 10; i <= 10; i++, j--) {
+		for (int i = 0, j = 10; i <= 10 && j >= 0; i++, j--) {
 			System.out.println(i + " - " + j);
 		}
 	}
