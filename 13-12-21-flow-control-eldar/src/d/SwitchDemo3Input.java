@@ -11,7 +11,7 @@ public class SwitchDemo3Input {
 		String day = sc.nextLine();
 		sc.close(); // close the scanner
 		// =======================================================
-		System.out.println(day); // print the user input
+		System.out.println("you entered: " + day); // print the user input
 		
 		switch (day) {
 		case "sunday":
