@@ -2,7 +2,7 @@ package e.loops;
 
 import java.util.Scanner;
 
-public class Demo1While3 {
+public class Demo3While {
 
 	public static void main(String[] args) {
 
