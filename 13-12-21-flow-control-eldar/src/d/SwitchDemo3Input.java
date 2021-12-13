@@ -1,10 +1,17 @@
 package d;
 
-public class SwitchDemo2 {
+import java.util.Scanner;
+
+public class SwitchDemo3Input {
 
 	public static void main(String[] args) {
-		String day = "saturday";
-		System.out.println(day);
+		// input from user ======================================
+		Scanner sc = new Scanner(System.in); // input from keyboard
+		System.out.print("enter day: ");
+		String day = sc.nextLine();
+		sc.close(); // close the scanner
+		// =======================================================
+		System.out.println(day); // print the user input
 		
 		switch (day) {
 		case "sunday":
