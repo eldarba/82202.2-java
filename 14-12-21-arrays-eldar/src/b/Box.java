@@ -1,6 +1,7 @@
 package b;
 
 public class Box {
+	
 	// attributes
 	private int length;
 	private int width;
