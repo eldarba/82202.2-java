@@ -2,7 +2,7 @@ package c;
 
 public class Demo2 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {//
 
 		String[] modes = { "ON", "OFF", "STAND_BY", "SLEEP" };
 
