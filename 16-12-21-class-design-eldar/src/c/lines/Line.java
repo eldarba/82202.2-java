@@ -4,6 +4,7 @@ public class Line {
 	
 	private int length;
 
+	// CTOR
 	public Line(int length) {
 		super();
 		this.length = length;
