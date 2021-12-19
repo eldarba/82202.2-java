@@ -1,6 +1,8 @@
 package c;
 
 public class Person {
+	
+	// fields
 
 	// instance variables
 	public final int id; // final cannot be reassigned
