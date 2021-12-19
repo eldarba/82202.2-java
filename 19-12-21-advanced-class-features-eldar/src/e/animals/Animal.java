@@ -1,4 +1,4 @@
-package c.animals;
+package e.animals;
 
 // abstract class
 public abstract class Animal {

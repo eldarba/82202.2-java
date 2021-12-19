@@ -1,4 +1,4 @@
-package c.animals;
+package e.animals;
 
 public interface Flyer {
 	

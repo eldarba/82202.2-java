@@ -1,4 +1,4 @@
-package c.animals;
+package e.animals;
 
 public abstract class Bird extends Animal {
 

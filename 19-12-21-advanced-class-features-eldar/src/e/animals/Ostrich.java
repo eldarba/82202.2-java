@@ -1,6 +1,6 @@
-package c.animals;
+package e.animals;
 
-public class Sparrow extends Bird {
+public class Ostrich extends Bird {
 
 	@Override
 	public void speak() {
