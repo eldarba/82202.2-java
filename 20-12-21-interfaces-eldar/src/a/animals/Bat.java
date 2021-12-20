@@ -1,5 +1,7 @@
 package a.animals;
 
+import interfaces.AdvancedFlyer;
+
 public class Bat extends Mammal implements AdvancedFlyer {
 
 	@Override

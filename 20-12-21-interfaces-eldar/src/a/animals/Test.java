@@ -1,5 +1,9 @@
 package a.animals;
 
+import interfaces.AdvancedFlyer;
+import interfaces.Flyer;
+import interfaces.Navigator;
+
 public class Test {
 
 	public static void main(String[] args) {

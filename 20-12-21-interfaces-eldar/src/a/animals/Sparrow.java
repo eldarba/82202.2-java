@@ -1,5 +1,8 @@
 package a.animals;
 
+import interfaces.Flyer;
+import interfaces.Navigator;
+
 public class Sparrow extends Bird implements Flyer, Navigator {
 
 	@Override

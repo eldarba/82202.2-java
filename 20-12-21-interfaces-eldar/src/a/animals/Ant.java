@@ -1,5 +1,7 @@
 package a.animals;
 
+import interfaces.Navigator;
+
 public class Ant extends Insect implements Navigator {
 
 	@Override

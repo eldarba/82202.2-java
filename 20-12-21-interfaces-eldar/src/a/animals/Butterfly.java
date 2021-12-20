@@ -1,5 +1,7 @@
 package a.animals;
 
+import interfaces.Flyer;
+
 public class Butterfly extends Insect implements Flyer {
 
 	@Override

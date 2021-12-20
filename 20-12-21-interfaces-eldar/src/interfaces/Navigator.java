@@ -1,4 +1,4 @@
-package a.animals;
+package interfaces;
 
 public interface Navigator {
 	
