@@ -2,6 +2,8 @@ package d;
 
 public class PersonAgeException extends Exception {
 
+	private static final long serialVersionUID = 1L;
+
 	public PersonAgeException() {
 		super();
 	}
