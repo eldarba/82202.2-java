@@ -2,7 +2,7 @@ package b.ui;
 
 import java.util.Scanner;
 
-public class ClaculatorUI {
+public class CalculatorUI {
 	
 	private Calculator calculator = new Calculator();
 	private Scanner sc = new Scanner(System.in);
@@ -16,13 +16,13 @@ public class ClaculatorUI {
 				doAdd();
 				break;
 			case "-":
-				doDelete();
+				doSub();
 				break;
 			}
 		}
 	}
 	
-	private void doDelete() {
+	private void doSub() {
 		System.out.print("enter value to subtract: ");
 		double val = Double.parseDouble(sc.nextLine());
 		calculator.sub(val);
