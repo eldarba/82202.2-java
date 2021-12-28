@@ -10,6 +10,7 @@ public class Person implements Serializable {
 	private int id;
 	private String name;
 	private int age;
+	// transient fields are not serialized
 	private transient String address;
 	
 	public Person() {
