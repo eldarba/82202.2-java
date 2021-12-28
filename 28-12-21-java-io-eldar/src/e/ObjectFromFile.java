@@ -11,7 +11,7 @@ public class ObjectFromFile {
 
 		
 		File file = new File("files/person.obj");
-		// object serialization
+		// object de-serialization
 		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));) {
 
 		Person p = (Person) in.readObject();
