@@ -1,26 +1,55 @@
 package app.core.stats;
 
+import app.core.Classroom;
 import app.core.Grade;
 import app.core.Person;
 import app.core.Profession;
+import app.core.School;
 import app.core.Student;
+import app.core.Teacher;
 
 public class SchoolStatistics {
 
+	private static int nextClassNumber = 101;
+
 	public static void main(String[] args) {
 		
-		Student student = getRandomStudent();
-		System.out.println(student);
-		System.out.println("=== grades:");
-		for (Grade grade : student.getGrades()) {
-			System.out.println(grade);
-		}
+		School school = getRandomSchool();
+		school.print();
 
+	}
+	
+	public static School getRandomSchool() {
+		School school = new School();
+		// use add methods to add classrooms to school
+		for (int i = 0; i < 5; i++) {
+			school.addClassroom(getRandomClassroom());
+		}
+		return school;
+	}
+
+	public static Classroom getRandomClassroom() {
+		int numberOfStudents = (int) (Math.random() * 6) + 10; // 10 - 15
+		Student[] students = new Student[numberOfStudents];
+		for (int i = 0; i < numberOfStudents; i++) {
+			students[i] = getRandomStudent();
+		}
+		// use CTOR to add students
+		// prepare an array of student and give it to the Classroom CTOR
+		Classroom classroom = new Classroom("classroom-" + nextClassNumber++, getRandomTeacher(), students);
+		return classroom;
+	}
+
+	public static Teacher getRandomTeacher() {
+		int age = (int) (Math.random() * (Person.MAX_AGE - Person.MIN_AGE + 1)) + Person.MIN_AGE;
+		int index = (int) (Math.random() * Profession.values().length);
+		Teacher teacher = new Teacher(getRandomStudentName(), age, Profession.values()[index]);
+		return teacher;
 	}
 
 	public static Student getRandomStudent() {
 		int age = (int) (Math.random() * (Person.MAX_AGE - Person.MIN_AGE + 1)) + Person.MIN_AGE;
-		Student student = new Student(getRandomName(), age);
+		Student student = new Student(getRandomStudentName(), age);
 		for (Profession profession : Profession.values()) {
 			int score = (int) (Math.random() * (Grade.MAX_SCORE - Grade.MIN_SCORE)) + Grade.MIN_SCORE;
 			Grade gr = new Grade(profession, score);
@@ -29,7 +58,7 @@ public class SchoolStatistics {
 		return student;
 	}
 
-	private static String getRandomName() {
+	private static String getRandomStudentName() {
 		String[] arr = { "Ron", "Danna", "Moshe", "David", "Lea" };
 		int i = (int) (Math.random() * arr.length);
 		return arr[i];

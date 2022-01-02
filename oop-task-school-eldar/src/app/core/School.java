@@ -1,8 +1,8 @@
 package app.core;
 
 public class School {
-	
-	private Classroom[] classrooms = new Classroom[5];
+	private final static int MAX = 5; 
+	private Classroom[] classrooms;
 
 	public Classroom[] getClassrooms() {
 		return classrooms;
@@ -13,10 +13,23 @@ public class School {
 	}
 	
 	public void addClassroom(Classroom classroom) {
+		if(this.classrooms==null) {
+			this.classrooms = new Classroom[MAX];
+		}
 		for (int i = 0; i < classrooms.length; i++) {
 			if (classrooms[i] == null) {
 				classrooms[i] = classroom;
 				return;
+			}
+		}
+	}
+	
+	public void print() {
+		System.out.println("SCHOOL:");
+		for (Classroom classroom : classrooms) {
+			if(classroom != null) {
+				System.out.println(classroom);
+				classroom.printStudents();
 			}
 		}
 	}

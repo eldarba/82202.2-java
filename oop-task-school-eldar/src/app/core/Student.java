@@ -34,5 +34,14 @@ public class Student extends Person {
 	public String toString() {
 		return "Student [name=" + getName() + ", age=" + getAge() + "]";
 	}
+	
+	public void printGrades() {
+		System.out.println("\t" + getName() + " grades: ");
+		for (Grade grade : grades) {
+			if(grade!=null) {
+				System.out.println("\t\t" + grade);
+			}
+		}
+	}
 
 }

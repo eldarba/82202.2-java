@@ -2,9 +2,10 @@ package app.core;
 
 public class Classroom {
 
+	public static final int MAX_SIZE = 15;
 	private String name;
 	private Teacher teacher;
-	private Student[] students = new Student[15];
+	private Student[] students;
 
 	public Classroom() {
 	}
@@ -49,6 +50,9 @@ public class Classroom {
 	}
 
 	public void addStudent(Student student) {
+		if(this.students==null) {
+			this.students = new Student[MAX_SIZE];
+		}
 		for (int i = 0; i < students.length; i++) {
 			if (students[i] == null) {
 				students[i] = student;
@@ -59,7 +63,18 @@ public class Classroom {
 
 	@Override
 	public String toString() {
-		return "Classroom [name=" + name + ", teacher=" + teacher + "]";
+		return "Classroom [name=" + name + ", teacher=" + this.teacher + "]";
+	}
+
+	public void printStudents() {
+		System.out.println("students:");
+		for (Student student : students) {
+			if (student != null) {
+				System.out.println(student);
+				student.printGrades();
+			}
+		}
+		System.out.println("================");
 	}
 
 }
