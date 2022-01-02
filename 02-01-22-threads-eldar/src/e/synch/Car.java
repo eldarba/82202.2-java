@@ -14,8 +14,9 @@ public class Car {
 		this.number = number;
 	}
 
+	// synchronized modifier is used on critical sections - so that the cannot be run together
 	public synchronized void drive(int distance) {
-		Thread driver = Thread.currentThread();
+		Thread driver = Thread.currentThread(); // get a  reference to the currently executing thread object - driver
 		System.out.println("driver " + driver.getName() + " started at " + km + " km. for a distance of " + distance
 				+ " with car " + number);
 		km += distance;
@@ -32,5 +33,11 @@ public class Car {
 		registeredDrivers.add(driver.getName());
 		System.out.println("\tdriver " + driver.getName() + " registered to car " + number);
 	}
+
+	public List<String> getRegisteredDrivers() {
+		return registeredDrivers;
+	}
+	
+	
 
 }
