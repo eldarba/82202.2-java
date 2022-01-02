@@ -13,12 +13,58 @@ public class SchoolStatistics {
 	private static int nextClassNumber = 101;
 
 	public static void main(String[] args) {
-		
+
 		School school = getRandomSchool();
 		school.print();
 
+		System.out.println("\n========== statistical information ===============");
+		printSchoolGradesAverage(school);
+
+		System.out.println("\n=== classroom averages:");
+		for (Classroom classroom : school.getClassrooms()) {
+			if (classroom != null) {
+				printClassroomGradesAverage(classroom);
+			}
+		}
+
 	}
-	
+
+	// methods that produce statistical information
+	// section 5
+	// 1
+	public static void printSchoolGradesAverage(School school) {
+		double sum = 0;
+		int c = 0;
+		for (Classroom classroom : school.getClassrooms()) {
+			if (classroom != null) {
+				double avg = classroom.getGradesAvg();
+				if (avg != -1) {
+					sum += avg;
+					c++;
+				}
+			}
+		}
+		if (c != 0) {
+			System.out.println("school total average: " + sum / c);
+		} else {
+			System.out.println("school total average: NO DATA");
+		}
+
+	}
+
+	// 2
+	public static void printClassroomGradesAverage(Classroom classroom) {
+		double avg = classroom.getGradesAvg();
+
+		System.out.print(classroom.getName() + " average: ");
+		if (avg != -1) {
+			System.out.println(avg);
+		} else {
+			System.out.println("NO DATA");
+		}
+	}
+
+	// methods that generate random data
 	public static School getRandomSchool() {
 		School school = new School();
 		// use add methods to add classrooms to school

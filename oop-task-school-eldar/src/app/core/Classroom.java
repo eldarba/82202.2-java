@@ -50,7 +50,7 @@ public class Classroom {
 	}
 
 	public void addStudent(Student student) {
-		if(this.students==null) {
+		if (this.students == null) {
 			this.students = new Student[MAX_SIZE];
 		}
 		for (int i = 0; i < students.length; i++) {
@@ -70,11 +70,33 @@ public class Classroom {
 		System.out.println("students:");
 		for (Student student : students) {
 			if (student != null) {
-				System.out.println(student);
+				System.out.println("\t" + student);
 				student.printGrades();
 			}
 		}
 		System.out.println("================");
+	}
+
+	/**
+	 * @return the grades avg of this classroom or -1 if there is no data
+	 */
+	public double getGradesAvg() {
+		double sum = 0;
+		int c = 0;
+		for (Student student : students) {
+			if (student != null) {
+				double avg = student.getGradesAvg();
+				if (avg != -1) {
+					sum += avg;
+					c++;
+				}
+			}
+		}
+		if (c > 0) {
+			return sum / c;
+		} else {
+			return -1;
+		}
 	}
 
 }
