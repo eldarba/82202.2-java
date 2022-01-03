@@ -34,13 +34,32 @@ public class Student extends Person {
 	public String toString() {
 		return "Student [name=" + getName() + ", age=" + getAge() + "]";
 	}
-	
+
 	public void printGrades() {
 		System.out.println("\t" + getName() + " grades: ");
 		for (Grade grade : grades) {
-			if(grade!=null) {
+			if (grade != null) {
 				System.out.println("\t\t" + grade);
 			}
+		}
+	}
+
+	/**
+	 * @return the grades avg of this student or -1 if there is no data
+	 */
+	public double getGradesAvg() {
+		double sum = 0;
+		int c = 0;
+		for (Grade grade : grades) {
+			if (grade != null) {
+				sum += grade.getScore();
+				c++;
+			}
+		}
+		if (c > 0) {
+			return sum / c;
+		} else {
+			return -1;
 		}
 	}
 
