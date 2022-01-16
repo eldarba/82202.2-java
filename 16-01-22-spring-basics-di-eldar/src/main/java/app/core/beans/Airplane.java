@@ -1,29 +1,24 @@
 package app.core.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
 @Scope("prototype")
-@Primary
-public class FamilyCar implements Vehicle {
+public class Airplane implements Vehicle {
 	
-	static int c; // this is just for generating new car numbers
+	static int c; // this is just for generating new numbers
 	
 	private int number = ++c;
 	
-	// this is a dependency - helper class
-	// it needs to be injected by the container
 	@Autowired
-	@Qualifier("carEngine") // qualify with annotation
-	private Engine engine;
+	private Engine airplaneEngine; // qualify by name
 
 	@Override
 	public void start() {
-		this.engine.switchOn();
+		this.airplaneEngine.switchOn();
 	}
 
 	@Override
@@ -33,7 +28,7 @@ public class FamilyCar implements Vehicle {
 
 	@Override
 	public void stop() {
-		this.engine.switchOff();
+		this.airplaneEngine.switchOff();
 	}
 
 }
