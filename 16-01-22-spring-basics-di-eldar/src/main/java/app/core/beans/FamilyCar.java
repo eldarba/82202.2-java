@@ -17,7 +17,7 @@ public class FamilyCar implements Vehicle {
 	private int number = ++c;
 	
 	// inject value from properties file - always text or numbers - not objects
-	@Value("${car.max.speed:80}")
+	@Value("${car.max.speed: -1}")
 	private int maxSpeed;
 	
 	// this is a dependency - helper class
