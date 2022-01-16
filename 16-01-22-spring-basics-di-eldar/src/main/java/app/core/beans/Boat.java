@@ -1,6 +1,7 @@
 package app.core.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,7 @@ public class Boat implements Vehicle {
 	private int number = ++c;
 	
 	@Autowired
+	@Qualifier("boatEngine")
 	private Engine engine;
 
 	@Override
