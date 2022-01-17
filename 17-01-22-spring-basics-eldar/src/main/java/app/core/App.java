@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Scope;
 
 import app.core.beans.Message;
 
-@Configuration
-@ComponentScan
+//@Configuration
+//@ComponentScan
 public class App {
 
 	public static void main(String[] args) {
