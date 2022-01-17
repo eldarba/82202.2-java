@@ -15,7 +15,8 @@ public class App3 {
 
 	public static void main(String[] args) throws InterruptedException {
 		System.out.println("App3");
-		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(App3.class);
+		AnnotationConfigApplicationContext ctx = 
+				new AnnotationConfigApplicationContext(App3.class);
 		
 		
 		Thread.sleep(3000);
