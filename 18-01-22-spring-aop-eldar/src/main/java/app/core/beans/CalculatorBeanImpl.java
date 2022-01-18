@@ -12,4 +12,4 @@ public class CalculatorBeanImpl implements CalculatorBeanInterface {
 		return str;
 	}
 
-} 
+}
