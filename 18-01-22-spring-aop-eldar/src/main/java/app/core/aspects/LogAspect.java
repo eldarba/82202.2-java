@@ -6,7 +6,7 @@ import org.aspectj.lang.annotation.Before;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 @Aspect
 public class LogAspect {
 	
