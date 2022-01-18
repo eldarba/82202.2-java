@@ -13,6 +13,11 @@ public class App {
 			// get the beans
 			CompanyDao companyDao = ctx.getBean(CompanyDao.class);
 			CouponDao couponDao = ctx.getBean(CouponDao.class);
+			// notice that we get proxy for out type as needed
+			System.out.println(companyDao.getClass());
+			System.out.println(couponDao.getClass());
+			
+			
 			// use them
 			companyDao.addCompany(101, "AAA");
 			companyDao.sayHello();

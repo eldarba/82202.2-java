@@ -12,9 +12,14 @@ public class LogAspect {
 	// it has an annotation @Before
 	// the annotation has a pointcut expression [execution(void addCompany(int, String))]
 	
-	@Before("execution(void addCompany(int, String))")
-	public void logAdvice() {
-		System.out.println("---------");
+	@Before("execution(void add*(..))")
+	public void logAdviceSpecific() {
+		System.out.println(">>> Log for addmethods");
 	}
+	
+//	@Before("execution(* *.*(..))")
+//	public void logAdviceGeneral() {
+//		System.out.println("\t>>> Log for ALL methods");
+//	}
 
 }
