@@ -1,7 +1,9 @@
 package app.core.aspects;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,9 +14,9 @@ public class LogAspect {
 	// it has an annotation @Before
 	// the annotation has a pointcut expression [execution(void addCompany(int, String))]
 	
-	@Before("execution(void add*(..))")
-	public void logAdviceSpecific() {
-		System.out.println(">>> Log for addmethods");
+	@Before("execution(* *.*(.., int, ..))")
+	public void logAdviceSpecific(JoinPoint jp) {
+		System.out.println(">>> Log for method: " + jp.getSignature());
 	}
 	
 //	@Before("execution(* *.*(..))")
