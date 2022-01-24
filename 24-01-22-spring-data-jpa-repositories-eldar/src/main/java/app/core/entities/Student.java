@@ -2,6 +2,7 @@ package app.core.entities;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -30,12 +31,13 @@ public class Student {
 	private int age;
 	private String email;
 	@Enumerated(EnumType.STRING)
+	@Column(name = "the_gender")
 	private Gender gender;
 	private LocalDate enrolled;
 	private boolean active;
 
 	public enum Gender {
-		M, F, O, X;
+		M, F;
 	}
 
 }

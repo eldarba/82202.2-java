@@ -1,5 +1,6 @@
 package app.core.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,14 @@ public class StudentService {
 		} else {
 			throw new RuntimeException("delete failed - student id " + id + " not found");
 		}
+	}
+
+	public List<Student> getFemaleStudents() {
+		return this.studentRepo.getFemales();
+	}
+
+	public List<Student> getMaleStudents() {
+		return this.studentRepo.getMales();
 	}
 
 }
