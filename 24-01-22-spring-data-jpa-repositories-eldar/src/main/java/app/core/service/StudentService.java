@@ -75,4 +75,10 @@ public class StudentService {
 		return this.studentRepo.getOlderThan(age);
 	}
 
+	public List<Student> getStudentsByName(String name) {
+		// System.out.println("****************** the implementing class: " +
+		// this.studentRepo.getClass());
+		return this.studentRepo.findByName(name);
+	}
+
 }

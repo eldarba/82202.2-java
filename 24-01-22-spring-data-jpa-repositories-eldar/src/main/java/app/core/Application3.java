@@ -43,7 +43,12 @@ public class Application3 {
 //			System.out.println(student);
 //		}
 
-		List<Student> students = service.getStudentsOlderThan(80);
+//		List<Student> students = service.getStudentsOlderThan(80);
+//		for (Student student : students) {
+//			System.out.println(student);
+//		}
+
+		List<Student> students = service.getStudentsByName("Moshe");
 		for (Student student : students) {
 			System.out.println(student);
 		}
