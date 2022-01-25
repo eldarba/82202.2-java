@@ -21,4 +21,7 @@ public interface StudentRepo extends JpaRepository<Student, Integer> {
 	@Query(value = "from Student where gender='M'")
 	List<Student> getMales(Sort sort);
 
+	@Query(value = "from Student where age > :age")
+	List<Student> getOlderThan(int age);
+
 }
