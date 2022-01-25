@@ -34,6 +34,7 @@ public class Student {
 	@Column(name = "the_gender")
 	private Gender gender;
 	private LocalDate enrolled;
+	@Column(columnDefinition = "BOOLEAN")
 	private boolean active;
 
 	public enum Gender {

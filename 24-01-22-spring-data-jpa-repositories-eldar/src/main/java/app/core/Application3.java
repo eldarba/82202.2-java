@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 
 import app.core.entities.Student;
 import app.core.service.StudentService;
@@ -34,7 +36,9 @@ public class Application3 {
 		}
 
 		System.out.println("==================");
-		List<Student> maleStudents = service.getMaleStudents();
+		List<Student> maleStudents = service.getMaleStudents(Sort.by("age")); // asc - default
+//		List<Student> maleStudents = service.getMaleStudents(Sort.by(Direction.ASC, "age")); // default
+//		List<Student> maleStudents = service.getMaleStudents(Sort.by(Direction.DESC, "age")); // desc
 		for (Student student : maleStudents) {
 			System.out.println(student);
 		}

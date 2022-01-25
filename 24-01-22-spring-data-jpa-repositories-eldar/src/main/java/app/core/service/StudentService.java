@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -64,6 +65,10 @@ public class StudentService {
 
 	public List<Student> getMaleStudents() {
 		return this.studentRepo.getMales();
+	}
+
+	public List<Student> getMaleStudents(Sort sort) {
+		return this.studentRepo.getMales(sort);
 	}
 
 }
