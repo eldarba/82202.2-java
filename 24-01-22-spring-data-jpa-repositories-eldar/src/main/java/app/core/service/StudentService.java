@@ -71,4 +71,8 @@ public class StudentService {
 		return this.studentRepo.getMales(sort);
 	}
 
+	public List<Student> getStudentsOlderThan(int age) {
+		return this.studentRepo.getOlderThan(age);
+	}
+
 }

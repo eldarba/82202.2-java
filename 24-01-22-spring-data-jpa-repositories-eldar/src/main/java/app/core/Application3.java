@@ -30,19 +30,23 @@ public class Application3 {
 //			service.addStudent(student);
 //		}
 
-		List<Student> femaleStudents = service.getFemaleStudents();
-		for (Student student : femaleStudents) {
+//		List<Student> femaleStudents = service.getFemaleStudents();
+//		for (Student student : femaleStudents) {
+//			System.out.println(student);
+//		}
+//
+//		System.out.println("==================");
+//		List<Student> maleStudents = service.getMaleStudents(Sort.by("age")); // asc - default
+////		List<Student> maleStudents = service.getMaleStudents(Sort.by(Direction.ASC, "age")); // default
+////		List<Student> maleStudents = service.getMaleStudents(Sort.by(Direction.DESC, "age")); // desc
+//		for (Student student : maleStudents) {
+//			System.out.println(student);
+//		}
+
+		List<Student> students = service.getStudentsOlderThan(80);
+		for (Student student : students) {
 			System.out.println(student);
 		}
-
-		System.out.println("==================");
-		List<Student> maleStudents = service.getMaleStudents(Sort.by("age")); // asc - default
-//		List<Student> maleStudents = service.getMaleStudents(Sort.by(Direction.ASC, "age")); // default
-//		List<Student> maleStudents = service.getMaleStudents(Sort.by(Direction.DESC, "age")); // desc
-		for (Student student : maleStudents) {
-			System.out.println(student);
-		}
-
 	}
 
 }
