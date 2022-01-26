@@ -1,5 +1,6 @@
 package app.core.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -37,5 +38,12 @@ public class Coupon {
 	@ManyToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	@JoinTable(name = "customer_coupon", joinColumns = @JoinColumn(name = "coupon_id"), inverseJoinColumns = @JoinColumn(name = "customer_id"))
 	private List<Customer> customers;
+
+	public void addCustomer(Customer customer) {
+		if (customers == null) {
+			customers = new ArrayList<>();
+		}
+		customers.add(customer);
+	}
 
 }
