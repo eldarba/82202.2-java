@@ -32,8 +32,8 @@ public class Application6 {
 			Student st3 = new Student(0, "Yosi", univIvrit);
 			Student[] arr = { st1, st2, st3 };
 			for (Student student : arr) {
-//				service.addStudent(student);
-				studentRepo.save(student);
+				service.addStudent(student);
+//				studentRepo.save(student);
 			}
 		} else {
 			System.out.println("University Not Found");
