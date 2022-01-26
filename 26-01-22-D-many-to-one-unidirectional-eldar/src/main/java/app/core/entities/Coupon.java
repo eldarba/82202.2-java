@@ -1,6 +1,5 @@
 package app.core.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -31,12 +30,5 @@ public class Coupon {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "coupon_id") // the FK is generated in review table
 	private List<Review> reviews;
-
-	public void addReview(Review review) {
-		if (this.reviews == null) {
-			this.reviews = new ArrayList<>();
-		}
-		this.reviews.add(review);
-	}
 
 }
