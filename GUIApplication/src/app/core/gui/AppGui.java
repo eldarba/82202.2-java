@@ -16,6 +16,7 @@ public class AppGui {
 	private User user = new User();
 	private JTextField tfEmail = new JTextField();
 	private JTextField tfPassword = new JTextField();
+	private JFrame fr = new JFrame("my app");
 	
 	public static void main(String[] args) {
 		AppGui app = new AppGui();
@@ -23,7 +24,6 @@ public class AppGui {
 	}
 	
 	private void createAndShowGui() {
-		JFrame fr = new JFrame("my app");
 		fr.setBounds(100, 100, 500, 300);
 		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fr.setLayout(null); // Absolute layout
@@ -66,7 +66,7 @@ public class AppGui {
 			AppGui.this.user.setEmail(email);
 			AppGui.this.user.setPassword(password);
 			
-			JOptionPane.showMessageDialog(null, user);
+			JOptionPane.showMessageDialog(AppGui.this.fr, user);
 			
 		}
 		
