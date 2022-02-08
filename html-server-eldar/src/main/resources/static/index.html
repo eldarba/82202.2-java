@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Forms</title>
+</head>
+
+<body>
+    <h1>Forms</h1>
+    
+    <fieldset>
+        <legend>Add User</legend>
+        <form action="http://localhost:8080/api/users/add-user" method="POST">
+            <label for="name">name</label>
+            <br>
+            <input id="name" name="name" type="text">
+            <br>
+            <label for="address">address</label>
+            <br>
+            <input id="address" name="address" type="text" placeholder="street, city, country">
+            <br>
+            age
+            <br>
+            <input id="age" name="age" type="number" name="age">
+            <br>
+            <br>
+            <button type="reset">Reset</button>
+            <button type="submit">Submit</button>
+        </form>
+    </fieldset>
+
+    <fieldset>
+        <legend>find user</legend>
+        <form action="http://localhost:8080/api/users/find-user" method="GET">
+            <input type="text" name="name" placeholder="enter user name">
+            <button type="submit">Submit</button>
+        </form>
+    </fieldset>
+</body>
+
+</html>
