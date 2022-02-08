@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- this is comment - use ctrl + / -->
+    <h1>Forms - togle buttons</h1>
+
+    <h3>multiple choice: check boxes</h3>
+    <h3>check boxes - different names, same value (on)</h3>
+    <fieldset>
+        <legend>hobbies1</legend>
+        <form action="">
+            <input type="checkbox" name="sports"> sports
+            <br>
+            <input type="checkbox" name="books"> books
+            <br>
+            <input type="checkbox" name="movies"> movies
+            <br>
+            <input type="submit">
+        </form>
+    </fieldset>
+    
+    <h3>check boxes - same name (hobbies), different values</h3>
+    <fieldset>
+        <legend>hobbies2</legend>
+        <form action="">
+            <input type="checkbox" name="hobbies" value="sports"> sports
+            <br>
+            <input type="checkbox" name="hobbies" value="books"> books
+            <br>
+            <input type="checkbox" name="hobbies" value="movies"> movies
+            <br>
+            <input type="submit">
+        </form>
+    </fieldset>
+    
+    <h3>single choice: radio buttons</h3>
+    <h3>radio buttons: same name (fav-color), different values</h3>
+    <fieldset>
+        <legend>favorite color</legend>
+        <form action="">
+            <input type="radio" name="fav-color" value="red"> red
+            <br>
+            <input type="radio" name="fav-color"  value="green"> green
+            <br>
+            <input type="radio" name="fav-color"  value="blue"> blue
+            <br>
+            <p>extra choice is posible with different name</p>
+            <input type="radio" name="black"> black
+            <br>
+            <input type="submit">
+            <input type="reset">
+        </form>
+    </fieldset>
+</body>
+
+</html>
