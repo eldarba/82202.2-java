@@ -1,0 +1,10 @@
+/* combining selectors */
+h1, h2, .red, #p1{
+    color: red;
+    text-decoration: underline;
+}
+
+/* css class */
+.green{
+    background-color: green;
+}

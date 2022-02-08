@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        div {
+            display: ;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>display</h1>
+    <button onclick="m1()">disapeare</button>
+    <br>
+    <div id="d1">the div</div>
+
+    <script>
+        function m1() {
+            // get a reference to the div elemebt
+            let myDiv = document.getElementById("d1");
+            console.dir(myDiv);
+            myDiv.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
