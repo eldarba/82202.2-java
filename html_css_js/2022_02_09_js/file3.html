@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        {
+            var a = 5; // hoisted - no scope
+            let b = 10; // scope
+            const c = 25; // constant
+
+            b++;
+            // c++; //error
+        }
+
+        console.log(a);
+        // console.log(b); // error - out of scope
+        console.log("======================");
+
+        let x = Math.floor(Math.random() * 11);
+        let y = Math.floor(Math.random() * 11);
+        let sum = x + y;
+        console.log(x + " + " + y + " = " + sum);
+
+
+    </script>
+</body>
+
+</html>

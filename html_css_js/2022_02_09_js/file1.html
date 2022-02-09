@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body style="background-color: black; color: blanchedalmond;">
+    <!-- HTML -->
+    <h3>This is HTML body</h3>
+    <button onclick="m1()">click</button><br>
+
+    <script>
+        // JavaScript here
+
+        // 1. output
+       // alert("Hello"); // popup window
+        
+        // 2. output
+        console.log("browser's console"); // browser's console - f12 - dev tools
+        
+        // 3. output
+        document.write("Date: " + new Date()); // HTML BODY
+        document.write("<h1>Heading</h1>");
+
+        window.document.write("BBB");
+
+        // window - reference to the browser - most global object
+        // document - reference to the current page
+        // write - method of document
+
+        function m1() {
+            document.write("Hello");
+        }
+
+    </script>
+
+</body>
+
+</html>
