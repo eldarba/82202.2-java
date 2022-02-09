@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+
+        let obj = { 
+            // define fields
+            id: 101, 
+            name: "david", 
+            age: 22,
+            // define function
+            greet: function(){
+                console.log("hello from " + this.name);
+                
+            }
+        };
+
+        console.log(obj);
+        
+        console.log(obj.id); // access fields
+        console.log(obj.name);
+        console.log(obj.age);
+        
+        obj.address = "Jerusalem";
+        console.log(obj);
+
+        obj.greet(); // call the function
+
+        console.log("====================");
+        class Person{
+            constructor(id, name, age){
+                this.id = id;
+                this.name = name;
+                this.age = age;
+            }
+            speak() {
+                console.log(this.name + " is speaking");
+                    
+            }
+        }
+
+        let p1 = new Person(101, "aaa", 25);
+        let p2 = new Person(102, "bbb", 33);
+
+        p1.speak();
+        p2.speak();
+
+        console.log(p1);
+        
+        class Employee extends Person {
+            constructor(id, name, age, salary){
+               super(id, name, age);
+               this.salary = salary;
+            }
+        }
+
+        let e1 = new Employee(201, "ccc", 33, 5000);
+        e1.speak();
+        console.log(e1);
+        
+
+    </script>
+</body>
+
+</html>

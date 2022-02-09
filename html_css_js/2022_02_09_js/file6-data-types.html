@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>data types in JS</h1>
+
+    <script>
+        let x;
+        console.log("=== primitive");
+        // ======== primitive types
+        // string
+        x = "aaa";
+        console.log(typeof x);
+        // number
+        x = 5;
+        console.log(typeof x);
+        // boolean
+        x = true;
+        console.log(typeof x);
+        // undefined
+        x = undefined;
+        console.log(typeof x);
+
+        console.log("=== complex");
+
+        // ======== complex types
+        // objects
+        x = new String("aaa");
+        console.log(typeof x);
+        // functions
+        function sum(a, b) {
+            return a + b;
+        }
+        console.log(typeof sum);
+
+        console.log("================");
+        
+        console.log(sum(4, 8));
+        
+    </script>
+</body>
+
+</html>
