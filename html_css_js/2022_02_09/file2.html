@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Positioning</title>
+    <style>
+            html{
+                height: 150%;
+            }
+        div{
+            background-color: cornflowerblue;
+            width: 100px;
+            height: 100px;
+            border: 5px solid black;
+            text-align: center;
+            font-size: x-large;
+        }
+
+        .relative{
+            position: relative;
+            background-color: burlywood;
+            left: 30px;
+            bottom: 30px;
+            /* z-index: -1; */
+        }
+
+        .fixed{
+            position: fixed;
+            background-color: coral;
+            right: 0;
+            bottom: 0;
+        }
+
+        .absolute{
+            background-color: darkorchid;
+        }
+
+    </style>
+</head>
+<body>
+   <div>static</div> 
+   <div class="relative">relative</div> 
+   <div class="fixed">fixed</div> 
+   <div>static</div> 
+   <div class="absolute">absolute</div> 
+</body>
+</html>
