@@ -4,7 +4,7 @@
     <title>Positioning</title>
     <style>
             html{
-                height: 150%;
+                height: 200%;
             }
         div{
             background-color: cornflowerblue;
@@ -32,6 +32,18 @@
 
         .absolute{
             background-color: darkorchid;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        fieldset{
+            position: absolute;
+            height: 200px;
+            width: 300px;
+            top: 25%;
+            left: 25%;
+            padding: 0;
         }
 
     </style>
@@ -41,6 +53,11 @@
    <div class="relative">relative</div> 
    <div class="fixed">fixed</div> 
    <div>static</div> 
-   <div class="absolute">absolute</div> 
+   <div>static</div> 
+   
+   <fieldset>
+       <legend>container</legend>
+       <div class="absolute">absolute</div> 
+   </fieldset>
 </body>
 </html>
