@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body onload="onPageLoad()">
+    <h1>Events</h1>
+
+    <script>
+        // this method is to run on page load
+        function onPageLoad() {
+            console.log("page loaded");
+            // set the color of the page
+            let r = Math.floor(Math.random() * 256);
+            let g = Math.floor(Math.random() * 256);
+            let b = Math.floor(Math.random() * 256);
+            document.body.style.backgroundColor = "rgb("+r+","+g+","+b+")";
+            console.log("rgb(" + r + "," + g + "," + b + ")");
+            // document.body.style.backgroundColor="rgb(100, 100, 100)";
+            // document.body.style.backgroundColor="red";
+        }
+    </script>
+</body>
+
+</html>

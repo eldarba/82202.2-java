@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Events</h1>
+    <!-- myInput -->
+    <input id="in" type="text" oninput="f()">
+    <!-- <input id="in" type="text" onchange="f()"> -->
+    <br>
+    <!-- myLbl -->
+    <label id="lb"></label>
+
+    <script>
+    ////////////////////////////
+    function f() {
+        console.log("change");
+        // get reference to document elements
+        let myInput = document.getElementById("in");
+        let myLbl = document.getElementById("lb");
+        // put the text from the input in the lable
+        myLbl.innerHTML = myInput.value;
+    }
+    </script>
+</body>
+</html>
