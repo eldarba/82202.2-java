@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <div id="x"></div>
+
+    <script src="code.js"></script>
+
+    <script>
+
+        let car = new Car(111, 50, "red");
+
+        let arr = [4, "aaa", 23,"bbb", 333, car];
+        console.log(arr.toString());
+        console.log(arr[0]);
+
+        console.log("====================");
+
+        for (let i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+        }
+
+        document.getElementById("x").innerHTML = arr;
+
+
+
+    </script>
+</body>
+
+</html>
