@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Store</title>
+</head>
+<body  style="background-color: darkslategrey">
+    <h1>Store of Items</h1>
+    <fieldset>
+        <legend>store of items</legend>
+        <div>id <input type="number" id="id" /></div>
+        <div>name <input type="text" id="name" /></div>
+        <div>price <input type="number" id="price" /></div>
+        <div>
+            <button onclick="save()">Save</button>
+            <button onclick="getOne()">Get One</button>
+            <button onclick="getAll()">Get All</button>
+            <button onclick="update()">Update</button>
+            <button onclick="deleteOne()">Delete</button>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Response from Server</legend>
+        <div id="resp"></div>
+    </fieldset>
+
+    <script>
+    function getAll() {
+        // create an object that can make http requests
+        let xhttp = new XMLHttpRequest();
+        // define what to do on ready state change (steps 1 - 4)
+        xhttp.onreadystatechange = function () {
+            if(this.readyState==4){
+
+                if(this.status==200){
+                    console.log(this.response);
+                    document.getElementById("resp").innerHTML = this.response;
+                }else{
+                   alert("Error"); 
+                }
+            }
+        }
+
+        // define the request = http method and url
+        xhttp.open("GET", "http://localhost:8080/items");
+        // send
+        xhttp.send();
+    }
+    </script>
+</body>
+</html>
