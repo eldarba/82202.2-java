@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>JS Arrays</h1>
+    <script>
+
+        let arr = [2, 5, 3, 2];
+
+        // are all elements positive
+        let allPositive = arr.every(e => e > 0)
+        console.log(allPositive);
+
+        // are all elements even
+        console.log("all elements even? " + arr.every(e => e % 2 == 0));
+
+
+        // are all elements of one digit
+        console.log("all elements of one digit? " + arr.every(e => e < 10 && e > -10));
+
+
+
+    </script>
+</body>
+
+</html>

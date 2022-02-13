@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Errors</h1>
+
+    <script>
+        "use strict";
+
+        class Person {
+            constructor(id, name, age) {
+                this.id = id;
+                this.name = name;
+                this.setAge(age);
+            }
+
+            setAge(age) {
+                if (age >= 0 && age <= 120) {
+                    this.age = age;
+                } else {
+                    throw new Error("setAge faild - illegal age value: " + age);
+                }
+            }
+        }
+
+        // run test - create a person and assign age
+        let p = new Person(101, "Amos", 15);
+        console.log(p);
+
+        try {
+            let age = Math.floor(Math.random() * 201);
+            p.setAge(age);
+            console.log(p);
+        } catch (e) {
+            console.log("ERROR: " + e.message);
+        }
+
+        console.log("=== END ===");
+        
+
+    </script>
+</body>
+
+</html>
