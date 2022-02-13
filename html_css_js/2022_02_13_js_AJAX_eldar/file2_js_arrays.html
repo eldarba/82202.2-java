@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>JS Arrays</h1>
+    <script>
+        let arr = ["red", "green", "blue"];
+        console.log(arr);
+
+        // splice - add to some index
+        // param 1 - start index
+        // param 2 - number of elements to delete
+        // param 3 - elements to add
+        arr.splice(2, 0, "aaa", "bbb");
+        console.log(arr);
+       
+        arr.splice(2, 2, "ccc", "ddd");
+        console.log(arr);
+
+        // use splice to delete element 1 and 2
+        arr.splice(1, 2);
+        console.log(arr);
+
+
+    </script>
+</body>
+
+</html>
