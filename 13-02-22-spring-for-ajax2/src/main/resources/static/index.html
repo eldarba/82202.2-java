@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body style="background-color: darkslategrey">
+    <h1>Store of Items</h1>
+    <fieldset>
+        <legend>store of items</legend>
+        <div>id <input type="number" id="id" /></div>
+        <div>name <input type="text" id="name" /></div>
+        <div>price <input type="number" id="price" /></div>
+        <div>
+            <button onclick="save()">Save</button>
+            <button onclick="getOne()">Get One</button>
+            <button onclick="getAll()">Get All</button>
+            <button onclick="update()">Update</button>
+            <button onclick="deleteOne()">Delete</button>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Response from Server</legend>
+        <div id="resp"></div>
+    </fieldset>
+
+    <script>
+
+        class Item{
+            constructor(id, name, price){
+                this.id = id;
+                this.name = name;
+                this.price = price;
+            }
+        }
+
+        function update() {
+            let id = document.getElementById("id").value;
+            let name = document.getElementById("name").value;
+            let price = document.getElementById("price").value;
+            let item = new Item(id, name, price);
+            console.log(item);
+            
+            // we need to set the item in JSON format
+            let itemAsJson = JSON.stringify(item);
+            console.log(itemAsJson);
+
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        document.getElementById("resp").innerHTML = "updated";
+                    } else {
+                        let msg = parseError(this.response);
+                        document.getElementById("resp").innerHTML = msg;
+                    }
+                }
+            }
+           
+            let url = "http://localhost:8080/items/";
+            xhttp.open("PUT", url);
+            // add a header to tell the server we send json in the body
+            xhttp.setRequestHeader("Content-Type", "application/json");
+            xhttp.send(itemAsJson); // put the json in the sent request body
+        }
+
+
+        function save() {
+            let name = document.getElementById("name").value;
+            let price = document.getElementById("price").value;
+            let item = new Item(0, name, price);
+            console.log(item);
+            
+            // we need to set the item in JSON format
+            let itemAsJson = JSON.stringify(item);
+            console.log(itemAsJson);
+
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        document.getElementById("resp").innerHTML = this.response; // the id
+                    } else {
+                        let msg = parseError(this.response);
+                        document.getElementById("resp").innerHTML = msg;
+                    }
+                }
+            }
+           
+            let url = "http://localhost:8080/items/";
+            xhttp.open("POST", url);
+            // add a header to tell the server we send json in the body
+            xhttp.setRequestHeader("Content-Type", "application/json");
+            xhttp.send(itemAsJson); // put the json in the sent request body
+        }
+
+        function deleteOne() {
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        document.getElementById("resp").innerHTML = "deleted";
+                    } else {
+                        // if we are here its an error response
+                        let msg = parseError(this.response);
+                        document.getElementById("resp").innerHTML = msg;
+                    }
+                }
+            }
+            // build the url
+            let id = document.getElementById("id").value;
+            if(id == ""){
+                alert("you must specify an id");
+                return;
+            }
+            let url = "http://localhost:8080/items/" + id
+            // open the request
+            xhttp.open("DELETE", url);
+            // send the request
+            xhttp.send();
+        }
+        
+        function getOne() {
+            // make a request to the server
+            // http://localhost:8080/items/1
+            let xhttp = new XMLHttpRequest(); // state 0
+            // callback for the field onreadystatechange
+            xhttp.onreadystatechange = function () {
+                console.log("reasy state: " + this.readyState);
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        document.getElementById("resp").innerHTML = this.response;
+                    } else {
+                        // if we are here its an error response
+                        let msg = parseError(this.response);
+                        document.getElementById("resp").innerHTML = msg;
+                    }
+                }
+            }
+            // build the url
+            let id = document.getElementById("id").value;
+            if(id == ""){
+                alert("you must specify an id");
+                return;
+            }
+            let url = "http://localhost:8080/items/" + id
+            // open the request
+            xhttp.open("GET", url, true); // state 1
+            // send the request
+            xhttp.send();
+        }
+
+        function parseError(errorAsJson) {
+            let respAsObj = JSON.parse(errorAsJson); // convert json string to object
+            // console.dir(respAsObj);
+            let msg = "error: " + respAsObj.error;
+            msg += "<br>message: " + respAsObj.message;
+            msg += "<br>status: " + respAsObj.status;
+            return msg;
+        }
+    </script>
+
+</body>
+
+</html>
