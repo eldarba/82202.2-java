@@ -9,21 +9,59 @@
     <h1>JS Arrays</h1>
     <script>
         let arr = ["red", "green", "blue"];
-        console.log(arr);
+        console.log(arr.join());
 
         // splice - add to some index
         // param 1 - start index
         // param 2 - number of elements to delete
         // param 3 - elements to add
         arr.splice(2, 0, "aaa", "bbb");
-        console.log(arr);
-       
+        console.log(arr.join());
+
         arr.splice(2, 2, "ccc", "ddd");
-        console.log(arr);
+        console.log(arr.join());
 
         // use splice to delete element 1 and 2
         arr.splice(1, 2);
-        console.log(arr);
+        console.log(arr.join());
+
+        console.log("===============");
+        let arr1 = [1, 2, 3];
+        let arr2 = [4, 5, 6];
+        let arr3 = arr1.concat(arr2);
+        console.log(arr3.join());
+        
+        let arr4 = arr1.concat(arr2).concat(arr3);
+        console.log(arr4.join());
+
+        // The slice() method returns selected
+        // elements in an array, as a new 
+        // array.
+        let startIndex = 3;
+        let endIndex = 6;
+        let arr5 = arr4.slice(startIndex, endIndex);
+        console.log(arr5.join());
+
+        arr5 = arr4.slice(3); // from 3 to end
+        console.log(arr5.join());
+        
+        console.log("===================");
+        // shift - remove first element and return it
+        arr5 = [2, 4, 6, 8];
+        console.log(arr5.join());
+        let x = arr5.shift();
+        console.log(x);
+        console.log(arr5.join());
+        console.log("===================");
+        arr5.unshift(100);
+        console.log(arr5.join());
+
+
+
+        
+
+        
+
 
 
     </script>

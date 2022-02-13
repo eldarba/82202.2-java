@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>JS Arrays</h1>
+    <script>
+        let arr = [2, 4, 6, 1, 8, 4, 9, 3];
+
+        let max = Math.max(2,5,7,1,4);
+        console.log(max);
+        
+        // use the max function on the specified object - arr
+        // param 1 - the reference for 'this' if used in the method
+        // param 2 - the reference for object on which to apply the method
+        max = Math.max.apply(null, arr);
+        console.log(max);
+        console.log("===============");
+        
+
+        class Movie {
+            constructor(name){
+                this.name = name;
+            }
+        }
+
+        class Person {
+            constructor(name){
+                this.name = name;
+            }
+
+            printName(){
+                console.log("the name is: " + this.name);
+            }
+
+            speak(x){
+                console.log(this.name +  " is saying: " + x);
+                
+            }
+        }
+
+        let movie = new Movie("Scream");
+        let person = new Person("Tom");
+
+        person.printName();
+        person.speak("aaa");
+
+        person.printName.apply(movie);
+        person.speak.apply(movie, ["bbb"]);
+        // movie.printName();
+
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>JS Arrays</h1>
+    <script>
+
+        let ages = [2, 4, 86, 11, 8, 43, 9, 32];
+        console.log(ages.join());
+
+        // 18 and up
+        let Over18 = ages.filter((value, index, array) => value >= 18);
+        console.log(Over18.join());
+
+        // under 18
+        let under18 = ages.filter(value => value < 18);
+        console.log(under18.join());
+        // first half: month, temp - second half - controll
+        let temp = [1, 25, 2, 32, 3, 17, 4, 12,5, 40,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        
+        // over 20 is hot
+        // filter - see the hot temps only
+        let over20 = temp.filter((temp, ind, arr) => ind < arr.length / 2 && ind % 2 == 1 && temp > 20);
+        console.log(over20.join());
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

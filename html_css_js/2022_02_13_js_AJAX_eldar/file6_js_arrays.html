@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>JS Arrays</h1>
+    <script>
+
+        let arr = [2, 5, 3, 2];
+
+        let sum = arr.reduce((sum, e) => sum += e); // סכום
+        let mul = arr.reduce((sum, e) => sum *= e); // מכפלה
+
+        // the long way - סכום הזוגיים
+        let sumOfEven = arr.reduce(
+            (sum, e) => {
+                if (e % 2 == 0) {
+                    sum += e;
+                }
+                return sum;
+            }
+            );
+            
+        // the short way - סכום הזוגיים
+        let sumOfEven2 = arr.reduce((sum, e) => e % 2 == 0 ? sum += e : sum);
+
+        console.log(sum);
+        console.log(mul);
+        console.log(sumOfEven);
+        console.log(sumOfEven2);
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>JS Arrays</h1>
+    <script>
+        // function that get another function as parameter
+        function predicate(val, f) {
+            return f(val);
+        }
+        // when using the function we give a value and a 
+        // function - as an arrow method
+        let bool = predicate(5, v => v % 2 == 0);
+        console.log(bool);
+        // another example of calling the metod
+        bool = predicate(500, v => v > 100);
+        console.log(bool);
+        // ========================================
+        // regular function definition
+        function isOver200Regular(val) {
+            return val > 200;
+        }
+        // arrow function definition - shroter syntax
+        let isOver200Arrow = val => val > 200;
+
+        // when using the function we give a value and a 
+        // function
+        bool = predicate(5, isOver200Regular);
+        console.log(bool);
+        bool = predicate(5, isOver200Arrow);
+        console.log(bool);
+
+        console.log("===================");
+
+        
+        
+
+
+    </script>
+</body>
+
+</html>
