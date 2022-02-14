@@ -21,7 +21,7 @@ import app.core.services.ItemService;
 
 @RestController
 @RequestMapping("/items")
-@CrossOrigin(originPatterns = "http://127.0.0.1:5500/")
+//@CrossOrigin(originPatterns = "http://127.0.0.1:5500/")
 public class ItemController {
 
 	@Autowired
