@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Store</title>
 </head>
-<body  style="background-color: darkslategrey">
+
+<body style="background-color: darkslategrey">
     <h1>Store of Items</h1>
     <fieldset>
         <legend>store of items</legend>
@@ -21,31 +23,71 @@
 
     <fieldset>
         <legend>Response from Server</legend>
-        <div id="resp"></div>
+        <div id="resp">response...</div>
     </fieldset>
 
     <script>
-    function getAll() {
-        // create an object that can make http requests
-        let xhttp = new XMLHttpRequest();
-        // define what to do on ready state change (steps 1 - 4)
-        xhttp.onreadystatechange = function () {
-            if(this.readyState==4){
 
-                if(this.status==200){
-                    console.log(this.response);
-                    document.getElementById("resp").innerHTML = this.response;
-                }else{
-                   alert("Error"); 
-                }
+        class Item{
+            constructor(id, name, price){
+                this.id=id;
+                this.name=name;
+                this.price=price;
             }
         }
 
-        // define the request = http method and url
-        xhttp.open("GET", "http://localhost:8080/items");
-        // send
-        xhttp.send();
-    }
+        function save() {
+            let id = 0;
+            let name = document.getElementById("name").value;
+            let price = document.getElementById("price").value;
+            let item = new Item(id, name, price);
+            console.log(item);
+            let itemAsJson = JSON.stringify(item);
+            console.log(itemAsJson);
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if(this.readyState==4){
+                    if(this.status==200){
+                        let id = this.response;
+                        document.getElementById("resp").innerHTML = "item " + id + " added";
+                    }else{
+                        alert("ERROR adding item");
+                        console.log(this.response);
+                        
+                    }
+                }
+            }
+            xhttp.open("POST", "http://localhost:8080/items");
+            xhttp.setRequestHeader("Content-Type", "application/json");
+            xhttp.send(itemAsJson); // we put the JSON in the request body
+        }
+
+
+        function getAll() {
+            // create an object that can make http requests
+            let xhttp = new XMLHttpRequest();
+            console.log("ready state: " + xhttp.readyState); // 0
+
+            // define what to do on ready state change (steps 1 - 4)
+            xhttp.onreadystatechange = function () {
+                console.log("ready state: " + xhttp.readyState); // 2, 3, 4
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        console.log(this.response);
+                        document.getElementById("resp").innerHTML = this.response;
+                    } else {
+                        alert("Error");
+                    }
+                }
+            }
+
+            // define the request = http method and url
+            xhttp.open("GET", "http://localhost:8080/items", true);
+            // send
+            xhttp.send();
+        }
     </script>
+
 </body>
+
 </html>

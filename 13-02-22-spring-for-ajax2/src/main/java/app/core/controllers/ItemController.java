@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ import app.core.services.ItemService;
 
 @RestController
 @RequestMapping("/items")
-@CrossOrigin(origins = "http://127.0.0.1:5500")
+@CrossOrigin
 public class ItemController {
 
 	@Autowired
@@ -28,6 +29,7 @@ public class ItemController {
 
 	@PostMapping
 	public int addItem(@RequestBody Item item) {
+		System.out.println("============ADD");
 		try {
 			return service.addItem(item);
 		} catch (Exception e) {
@@ -47,6 +49,15 @@ public class ItemController {
 
 	@GetMapping
 	public List<Item> getAllItems() {
+		System.out.println("===========================");
+		System.out.println("==========  request received");
+		System.out.println("===========================");
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		try {
 			return service.getAllItems();
 		} catch (Exception e) {
