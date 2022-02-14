@@ -47,7 +47,11 @@ public class ItemService {
 	}
 
 	public void deleteItem(int id) {
-		itemRepo.deleteById(id);
+		try {
+			itemRepo.deleteById(id);
+		} catch (Exception e) {
+			throw new RuntimeException("delete Item: " + id + " failed - not found", e);
+		}
 	}
 
 }

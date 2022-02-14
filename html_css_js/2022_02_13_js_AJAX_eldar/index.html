@@ -20,14 +20,71 @@
             <button onclick="deleteOne()">Delete</button>
         </div>
     </fieldset>
-
+    
     <fieldset>
         <legend>Response from Server</legend>
         <div id="resp">response...</div>
     </fieldset>
-
+    
     <script>
+        function deleteOne() {
+            document.getElementById("resp").style.color="black";
+            let id = document.getElementById("id").value;
 
+            if(id == undefined || id == ""){
+                alert("you must enter id");
+                return;
+            }
+
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        document.getElementById("resp").innerHTML = "item deleted";
+                    } else {
+                        let error = JSON.parse(this.response);
+                        console.log(error);
+                        
+                        document.getElementById("resp").style.color="red";
+                        document.getElementById("resp").innerHTML = error.message + "<br>" + error.error + "<br>status: " + this.status;
+                    }
+                }
+            }
+            
+
+            xhttp.open("DELETE", "http://localhost:8080/items/" + id);
+            xhttp.send();
+        }
+
+        function getOne() {
+            document.getElementById("resp").style.color="black";
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        document.getElementById("resp").innerHTML = this.response;
+                    } else {
+                        // parse the error json (text) to JS object
+                        let error = JSON.parse(this.response);
+                        console.log(error); // print to see object fields
+                        
+                        // disply the error message field on the document
+                        
+                        document.getElementById("resp").style.color="red";
+                        document.getElementById("resp").innerHTML = error.message + "<br>" + error.error;
+                    }
+                }
+            }
+            
+            let id = document.getElementById("id").value;
+            if(id == undefined || id == ""){
+                alert("you must enter id");
+                return;
+            }
+            xhttp.open("GET", "http://localhost:8080/items/" + id);
+            xhttp.send();
+        }
+        
         class Item{
             constructor(id, name, price){
                 this.id=id;
@@ -35,8 +92,35 @@
                 this.price=price;
             }
         }
-
+        
+        function update() {
+            document.getElementById("resp").style.color="black";
+            let id = document.getElementById("id").value;
+            let name = document.getElementById("name").value;
+            let price = document.getElementById("price").value;
+            let item = new Item(id, name, price);
+            console.log(item);
+            let itemAsJson = JSON.stringify(item);
+            console.log(itemAsJson);
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if(this.readyState==4){
+                    if(this.status==200){
+                        document.getElementById("resp").innerHTML = "item updated";
+                    }else{
+                       let e = JSON.parse(this.response);
+                       document.getElementById("resp").style.color="red";
+                       document.getElementById("resp").innerHTML = e.message;
+                    }
+                }
+            }
+            xhttp.open("PUT", "http://localhost:8080/items");
+            xhttp.setRequestHeader("Content-Type", "application/json");
+            xhttp.send(itemAsJson); // we put the JSON in the request body
+        }
+        
         function save() {
+            document.getElementById("resp").style.color="black";
             let id = 0;
             let name = document.getElementById("name").value;
             let price = document.getElementById("price").value;
@@ -61,13 +145,14 @@
             xhttp.setRequestHeader("Content-Type", "application/json");
             xhttp.send(itemAsJson); // we put the JSON in the request body
         }
-
-
+        
+        
         function getAll() {
+            document.getElementById("resp").style.color="black";
             // create an object that can make http requests
             let xhttp = new XMLHttpRequest();
             console.log("ready state: " + xhttp.readyState); // 0
-
+            
             // define what to do on ready state change (steps 1 - 4)
             xhttp.onreadystatechange = function () {
                 console.log("ready state: " + xhttp.readyState); // 2, 3, 4

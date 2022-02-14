@@ -21,7 +21,7 @@ import app.core.services.ItemService;
 
 @RestController
 @RequestMapping("/items")
-@CrossOrigin
+@CrossOrigin(originPatterns = "http://127.0.0.1:5500/")
 public class ItemController {
 
 	@Autowired
@@ -49,15 +49,14 @@ public class ItemController {
 
 	@GetMapping
 	public List<Item> getAllItems() {
-		System.out.println("===========================");
-		System.out.println("==========  request received");
-		System.out.println("===========================");
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+//		System.out.println("===========================");
+//		System.out.println("==========  request received");
+//		System.out.println("===========================");
+//		try {
+//			Thread.sleep(5000);
+//		} catch (InterruptedException e1) {
+//			e1.printStackTrace();
+//		}
 		try {
 			return service.getAllItems();
 		} catch (Exception e) {
