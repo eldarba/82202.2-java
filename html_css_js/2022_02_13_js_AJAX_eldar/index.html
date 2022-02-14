@@ -6,6 +6,21 @@
 </head>
 
 <body style="background-color: darkslategrey">
+
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>price</th>
+        </tr>
+
+        <tr>
+            <td>101</td>
+            <td>aaa</td>
+            <td>20</td>
+        </tr>
+
+    </table>
     <h1>Store of Items</h1>
     <fieldset>
         <legend>store of items</legend>
@@ -20,18 +35,59 @@
             <button onclick="deleteOne()">Delete</button>
         </div>
     </fieldset>
-    
+
     <fieldset>
         <legend>Response from Server</legend>
         <div id="resp">response...</div>
     </fieldset>
-    
+
     <script>
+        function getAll() {
+            document.getElementById("resp").style.color = "black";
+            // create an object that can make http requests
+            let xhttp = new XMLHttpRequest();
+            console.log("ready state: " + xhttp.readyState); // 0
+
+            // define what to do on ready state change (steps 1 - 4)
+            xhttp.onreadystatechange = function () {
+                console.log("ready state: " + xhttp.readyState); // 2, 3, 4
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        // parse the JSON respons and get an array of item elements
+                        let items = JSON.parse(this.response);
+
+                        // build a string for an html table with all data
+                        // start of table + header columns
+                        let str = '<table border="1"><tr><th>id</th><th>name</th><th>price</th></tr>';
+                        // <tr><td>101</td><td>aaa</td><td>20</td></tr>
+                        // all table data
+                        items.forEach(item => {
+                            console.log(item);
+                            str += "<tr><td>" + item.id + "</td><td>" + item.name + "</td><td>" + item.price + "</td></tr>"
+                        });
+                        // end of table element
+                        str += "</table>";
+
+                        // put the table in the response area
+                        document.getElementById("resp").innerHTML = str;
+
+                    } else {
+                        alert("Error");
+                    }
+                }
+            }
+
+            // define the request = http method and url
+            xhttp.open("GET", "http://localhost:8080/items", true);
+            // send
+            xhttp.send();
+        }
+
         function deleteOne() {
-            document.getElementById("resp").style.color="black";
+            document.getElementById("resp").style.color = "black";
             let id = document.getElementById("id").value;
 
-            if(id == undefined || id == ""){
+            if (id == undefined || id == "") {
                 alert("you must enter id");
                 return;
             }
@@ -44,20 +100,20 @@
                     } else {
                         let error = JSON.parse(this.response);
                         console.log(error);
-                        
-                        document.getElementById("resp").style.color="red";
+
+                        document.getElementById("resp").style.color = "red";
                         document.getElementById("resp").innerHTML = error.message + "<br>" + error.error + "<br>status: " + this.status;
                     }
                 }
             }
-            
+
 
             xhttp.open("DELETE", "http://localhost:8080/items/" + id);
             xhttp.send();
         }
 
         function getOne() {
-            document.getElementById("resp").style.color="black";
+            document.getElementById("resp").style.color = "black";
             let xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4) {
@@ -67,34 +123,35 @@
                         // parse the error json (text) to JS object
                         let error = JSON.parse(this.response);
                         console.log(error); // print to see object fields
-                        
+
                         // disply the error message field on the document
-                        
-                        document.getElementById("resp").style.color="red";
+
+                        document.getElementById("resp").style.color = "red";
                         document.getElementById("resp").innerHTML = error.message + "<br>" + error.error;
                     }
                 }
             }
-            
+
             let id = document.getElementById("id").value;
-            if(id == undefined || id == ""){
+            if (id == undefined || id == "") {
                 alert("you must enter id");
                 return;
             }
             xhttp.open("GET", "http://localhost:8080/items/" + id);
             xhttp.send();
         }
-        
-        class Item{
-            constructor(id, name, price){
-                this.id=id;
-                this.name=name;
-                this.price=price;
+
+        class Item {
+            constructor(id, name, price) {
+                this.id = id;
+
+                this.name = name;
+                this.price = price;
             }
         }
-        
+
         function update() {
-            document.getElementById("resp").style.color="black";
+            document.getElementById("resp").style.color = "black";
             let id = document.getElementById("id").value;
             let name = document.getElementById("name").value;
             let price = document.getElementById("price").value;
@@ -104,13 +161,13 @@
             console.log(itemAsJson);
             let xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
-                if(this.readyState==4){
-                    if(this.status==200){
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
                         document.getElementById("resp").innerHTML = "item updated";
-                    }else{
-                       let e = JSON.parse(this.response);
-                       document.getElementById("resp").style.color="red";
-                       document.getElementById("resp").innerHTML = e.message;
+                    } else {
+                        let e = JSON.parse(this.response);
+                        document.getElementById("resp").style.color = "red";
+                        document.getElementById("resp").innerHTML = e.message;
                     }
                 }
             }
@@ -118,9 +175,9 @@
             xhttp.setRequestHeader("Content-Type", "application/json");
             xhttp.send(itemAsJson); // we put the JSON in the request body
         }
-        
+
         function save() {
-            document.getElementById("resp").style.color="black";
+            document.getElementById("resp").style.color = "black";
             let id = 0;
             let name = document.getElementById("name").value;
             let price = document.getElementById("price").value;
@@ -130,14 +187,14 @@
             console.log(itemAsJson);
             let xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
-                if(this.readyState==4){
-                    if(this.status==200){
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
                         let id = this.response;
                         document.getElementById("resp").innerHTML = "item " + id + " added";
-                    }else{
+                    } else {
                         alert("ERROR adding item");
                         console.log(this.response);
-                        
+
                     }
                 }
             }
@@ -145,32 +202,8 @@
             xhttp.setRequestHeader("Content-Type", "application/json");
             xhttp.send(itemAsJson); // we put the JSON in the request body
         }
-        
-        
-        function getAll() {
-            document.getElementById("resp").style.color="black";
-            // create an object that can make http requests
-            let xhttp = new XMLHttpRequest();
-            console.log("ready state: " + xhttp.readyState); // 0
-            
-            // define what to do on ready state change (steps 1 - 4)
-            xhttp.onreadystatechange = function () {
-                console.log("ready state: " + xhttp.readyState); // 2, 3, 4
-                if (this.readyState == 4) {
-                    if (this.status == 200) {
-                        console.log(this.response);
-                        document.getElementById("resp").innerHTML = this.response;
-                    } else {
-                        alert("Error");
-                    }
-                }
-            }
 
-            // define the request = http method and url
-            xhttp.open("GET", "http://localhost:8080/items", true);
-            // send
-            xhttp.send();
-        }
+
     </script>
 
 </body>
