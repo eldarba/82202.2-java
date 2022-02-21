@@ -17,7 +17,7 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 	
-	// register and map the filter
+	// register and map the filter in a filter container
 	@Bean
 	public FilterRegistrationBean<MyFilter> myFilter(JwtUtil jwtUtil){
 		// container for registering filters
