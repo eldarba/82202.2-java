@@ -20,7 +20,7 @@ public class PersonController {
 	private PersonService personService;
 	
 	@PostMapping
-	public int addPerson(@RequestBody Person person, @RequestHeader String token) {
+	public int addPerson(@RequestBody Person person, @RequestHeader(name = "token") String token) {
 		return this.personService.addPerson(person);
 	}
 	

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
 
 import app.core.jwt.util.JwtUtil;
 
@@ -27,22 +26,32 @@ public class MyFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		System.out.println(">>> FILTER");
 		// cast the req/resp to http
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 
 		String token = req.getHeader("token");
-		if (token != null && !jwtUtil.isTokenExpired(token)) {
-			// check token validity
-			// if valid forward the request to the end point
-			chain.doFilter(request, response);
-			return;
-		} else {
-			// if NOT valid
-			// throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "not logged in");
-			resp.sendError(HttpStatus.UNAUTHORIZED.value(), "not logged in");
+		if (token != null) {
+			try {
+				if (!jwtUtil.isTokenExpired(token)) {
+					System.out.println(">>> FILTER - valid token");
+					// check token validity
+					// if valid forward the request to the end point
+					chain.doFilter(request, response);
+					return;
+				}
+			} catch (Exception e) {
+				System.out.println(">>> FILTER - invalid token");
+				resp.sendError(HttpStatus.UNAUTHORIZED.value(), "invalid token - go to login");
+				return;
+			}
 		}
-
+		
+		System.out.println(">>> FILTER - invalid token");
+		// if NOT valid
+		// throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "not logged in");
+		resp.sendError(HttpStatus.UNAUTHORIZED.value(), "not logged in");
 	}
 
 }
