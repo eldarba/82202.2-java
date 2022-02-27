@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.server.ResponseStatusException;
 
 import app.core.services.JwtUtil;
 import app.core.services.JwtUtil.ClientDetails;
@@ -45,8 +47,12 @@ public class LoginFilter implements Filter {
 			chain.doFilter(request, response);
 			return;
 		} catch (Exception e) {
+			// if we are here token is expired
 			e.printStackTrace();
+			// send an error response to caller
+			resp.setHeader("Access-Control-Allow-Origin", "*");
 			resp.sendError(HttpStatus.UNAUTHORIZED.value(), "not logged in");
+//			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "not logged in");
 		}
 
 	}

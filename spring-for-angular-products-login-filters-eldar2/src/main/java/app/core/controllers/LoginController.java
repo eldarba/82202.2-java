@@ -21,6 +21,7 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 
+	// in the http body: email=aaa&password=bbb
 	@PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	public String login(@RequestParam String email, @RequestParam String password) throws ResponseStatusException {
 		try {
