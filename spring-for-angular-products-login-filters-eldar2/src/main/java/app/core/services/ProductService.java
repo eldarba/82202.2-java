@@ -22,6 +22,9 @@ public class ProductService {
 		if (this.productRepo.existsById(product.getId())) {
 			throw new ProductException("addProduct failed - already exists: " + product.getId());
 		}
+		if (this.productRepo.existsByName(product.getName())) {
+			throw new ProductException("addProduct failed - name already exists: " + product.getName());
+		}
 		return this.productRepo.save(product).getId();
 	}
 
@@ -41,6 +44,10 @@ public class ProductService {
 	public void updateProduct(Product product) throws ProductException {
 		if (this.productRepo.existsById(product.getId())) {
 			this.productRepo.save(product);
+//			Product productFromDb = this.productRepo.findById(product.getId()).get();
+//			productFromDb.setName(product.getName());
+//			productFromDb.setPrice(product.getPrice());
+//			productFromDb.setStock(product.getStock());
 		} else {
 			throw new ProductException("updateProduct failed - not found: " + product.getId());
 		}

@@ -53,7 +53,7 @@ public class ProductController {
 	}
 
 	@PutMapping
-	public void updateProduct(Product product, @RequestHeader String token) throws ResponseStatusException {
+	public void updateProduct(@RequestBody Product product, @RequestHeader String token) throws ResponseStatusException {
 		try {
 			this.productService.updateProduct(product);
 		} catch (Exception e) {
