@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.server.ResponseStatusException;
 
 import app.core.services.JwtUtil;
 import app.core.services.JwtUtil.ClientDetails;
@@ -37,14 +35,14 @@ public class LoginFilter implements Filter {
 
 		if (token == null && req.getMethod().equals("OPTIONS")) {
 			System.out.println("this is preflight request: " + req.getMethod());
-			chain.doFilter(request, response);
+			chain.doFilter(request, response); // go ahead with preflight
 			return;
 		}
 
 		try {
 			ClientDetails clientDetails = jwtUtil.extractClient(token);
 			System.out.println("===== LOGIN FILTER: " + clientDetails);
-			chain.doFilter(request, response);
+			chain.doFilter(request, response); // go to resource
 			return;
 		} catch (Exception e) {
 			// if we are here token is expired
